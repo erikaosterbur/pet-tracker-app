@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const { Vet, Pet } = require('../../models');
+const withAuth = require('../../utils/auth')
 
 //Get all visit
 //Get visit by id
@@ -9,7 +10,7 @@ const { Vet, Pet } = require('../../models');
 
 
 //Pulling all vet visits
-router.get('/', async (req, res) => {
+router.get('/', withAuth, async (req, res) => {
     try {
       const vetData = await Vet.findAll({
         include: [{model: Pet}]
@@ -22,7 +23,7 @@ router.get('/', async (req, res) => {
 });
 
 //Pulling vet visit by id
-router.get('/:id', async (req, res) => {
+router.get('/:id', withAuth, async (req, res) => {
     try {
       const vetData = await Vet.findByPk(req.params.id, {
         indclude: [{ model: Pet }]
@@ -41,7 +42,7 @@ router.get('/:id', async (req, res) => {
 });
 
 //Create new vet visit
-router.post('/', async (req, res) => {
+router.post('/', withAuth, async (req, res) => {
     try {
       const vetData = await Vet.create(req.body);
       res.status(200).json(vetData);
@@ -54,13 +55,11 @@ router.post('/', async (req, res) => {
 
 //Update Vet visit
 //Likely needs tweaking
-router.put('/:id', (req, res) => {
+router.put('/:id', withAuth, (req, res) => {
     Vet.update( req.body, {
 //This part is iffy
       where: {
-        date: req.params.id,
-        description: req.params.id,
-        weight: req.params.id,
+        id: req.params.id,
       }
     })
     .then((updatedVet) => {
@@ -71,7 +70,7 @@ router.put('/:id', (req, res) => {
 });
 
 //Delete a vet visit
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', withAuth, async (req, res) => {
     try {
       const vetData = await Vet.destroy({
         where: {
