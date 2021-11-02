@@ -1,0 +1,11 @@
+{{#each pets as |pet| }}
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">{{pet.name}}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">{{pet.type}}</h6>
+            <h6 class="card-body">{{pet.color}}</h6>
+            <h6 class="card-body">{{pet.dateofbirth}}</h6>
+            <a href="/pets/{{pet.id}}" class="card-link">View Pet</a>
+        </div>
+    </div>
+{{/each}}

@@ -1,4 +1,4 @@
-async function newFormHandler(event) {
+async function newVetFormHandler(event) {
     event.preventDefault();
     const date = document.querySelector('#new-visit-date').value;
     const description = document.querySelector('#new-visit-description').value;
@@ -18,4 +18,4 @@ async function newFormHandler(event) {
     }
 }
   
-document.querySelector('.new-vet-form').addEventListener('submit', newFormHandler);
+document.querySelector('.new-vet-form').addEventListener('submit', newVetFormHandler);

@@ -4,18 +4,22 @@ const withAuth = require('../../utils/auth');
 
 //create new user route
 router.post('/', async (req, res) => {
+    console.log("route hit")
     try {
-        const userData = await User.create(
-            name = req.body.name,
-            email = req.body.email,
-            password = req.body.password,
-        )
+        const userData = await User.create({
+            username: req.body.username,
+            password: req.body.password,
+        });
+
+        const betterUser = userData.get({plain: true});
+        console.log(betterUser);
 
         req.session.save(() => {
-            req.session.user_id = userData.isSoftDeleted;
+            req.session.user_id = betterUser.id;
+            req.session.username = betterUser.username;
             req.session.logged_in = true;
 
-            res.status(200).json(userData);
+            res.status(200).json(betterUser);
         });
     } catch (err) {
         res.status(400).json(err);
@@ -25,17 +29,17 @@ router.post('/', async (req, res) => {
 //login route
 router.post('/login', async (req, res) => {
     try {
-        const userData = await User.findOne({ where: { email: req.body.email }});
+        const userData = await User.findOne({ where: { username: req.body.username }});
 
         if(!userData) {
-            res.status(400).json({ message: 'Incorrect email or password, please try again' });
+            res.status(400).json({ message: 'Incorrect username or password, please try again' });
             return;
         }
 
         const validPassword = await userData.checkPassword(req.body.password);
 
         if (!validPassword) {
-            res.status(400).json({ message: 'Incorrect email or password, please try again '});
+            res.status(400).json({ message: 'Incorrect username or password, please try again '});
             return;
         }
 
