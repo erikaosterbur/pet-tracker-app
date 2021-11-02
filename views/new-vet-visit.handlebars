@@ -1,25 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>New Vet Visit</title>
-</head>
-<body>
     <form>
         <p>
             What date did this visit take place?
         </p>
-        <textarea> {{date}} </textarea>
+        <textarea id='new-visit-date'></textarea>
         <p>
             What took place during this visit?
         </p>
-        <textarea> {{description}} </textarea>
+        <textarea id='new-visit-description'></textarea>
         <p>
             What was pet's recorded weight?
         </p>
-        <textarea> {{weight}} </textarea>
+        <textarea id='new-visit-weight'></textarea>
     </form>
-</body>
-</html>
+
+<button id='new-visit-submit'>Submit</button>
+
