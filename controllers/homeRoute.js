@@ -1,7 +1,12 @@
 const router = require('express').Router();
 
-router.get('/', async (req, res) => {
-  res.render('homepage'); // homepage handlebar
+router.get('/', (req, res) => {
+  try {
+    res.render('login'); // homepage handlebar
+  } catch (err) {
+    res.status(500).json(err);
+    console.log(err);
+  }
 });
 
 module.exports = router;

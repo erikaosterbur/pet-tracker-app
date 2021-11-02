@@ -1,7 +1,25 @@
 const router = require('express').Router();
 const { request } = require('express');
-const { Pet } = require('../../models');
+const { Pet, Vet } = require('../../models');
 const withAuth = require('../../utils/auth');
+
+router.get('/:id', withAuth, async (req, res) => {
+  try {
+    const petData = await Pet.findByPk(req.params.id, {
+      indclude: [{ model: Vet }]
+    });
+
+    if (!petData) {
+      res.status(404).json({ message: "No pet found with that id :("})
+      return;
+    }
+
+    res.status(200).json(petData);
+  } catch (err) {
+    console.log(err)
+    res.status(500).json(err);
+  }
+});
 
 //Create a new Pet
 router.post('/', withAuth, async (req, res) => {
