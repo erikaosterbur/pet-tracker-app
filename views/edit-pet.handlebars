@@ -1,0 +1,32 @@
+<form class="col-10 p-4 m-auto" id="edit-pet">
+        <input type="hidden" id="edit-pet-id" value="{{pet.id}}"/>
+        <h4 class="form group col-5 m-auto">EDIT PET</h4>
+        <div class="form-group">
+            <label for="postName">Name:</label>
+            <textarea class="form-control" id="edited-name" rows="1">{{pet.name}}</textarea>
+        </div>
+        <div class="form-group">
+            <label for="petType">Type:</label>
+            <textarea class="form-control" id="edited-type" rows="1">{{pet.type}}</textarea>
+        </div>
+        <div class="form-group">
+            <label for="petColor">Color:</label>
+            <textarea class="form-control" id="edited-type" rows="1">{{pet.color}}</textarea>
+        </div>
+        <div class="form-group">
+            <label for="petDOB">Date of Birth:</label>
+            <textarea class="form-control" id="edited-DOB" rows="1">{{pet.dateofbirth}}</textarea>
+        </div>
+        <div class="d-flex justify-content-center">
+            <button class="btn btn-dark col-4">Update Pet</button>
+        </div>
+</form> 
+
+
+<div class="d-flex justify-content-center">
+    <button class="btn btn-danger col-3" id="delete-pet-button">Delete Pet</button>
+</div>
+
+
+
+<script src="/js/edit-pet.js"></script>
