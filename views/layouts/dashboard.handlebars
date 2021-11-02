@@ -1,19 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
-  <meta charset="UTF-8">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pet Tracker App</title>
   <link rel="stylesheet" href="/css/style.css">
 </head>
 
-<body>
-  <div class="flex-column justify-space-around">
-    <header class="display-flex justify-space-between align-center p-2">
-      <h1>
-        Your Pet Dashboard
-      </h1>
-    </header>
-      <main class="container container-fluid mt-5">
-        {{{ body }}}
-      </main>
-  </div>
-  </body>
+<body class="flex-column min-100-vh">
+  <nav class="navbar">
+    <ul class="flex-row">
+      <li class="li-inline nav-item"><a href="#" id="logout-link">Logout</a></li>
+    </ul>
+  </nav>
+  <header class="hero">
+    <h1 class="app-title"><a href="/dashboard">Your Pet Dashboard</a></h1>
+  </header>
+
+  <main class="col-auto">
+    {{{body}}}
+  </main>
+
+{{!-- KEEP? --}}
+  <footer class="footer flex-row justify-center">
+    <a href="/dashboard/new">Add New Pet</a>
+  </footer>
+</body>
+
+<script src="/js/logout.js"></script>
+
 </html>

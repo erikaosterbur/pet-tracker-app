@@ -31,24 +31,18 @@ router.get('/new', withAuth, (req, res) => {
     });
   });
 
-// EDIT PET OPTION IN DASHBOARD?
-// router.get('/edit/:id', withAuth, async (req, res) => {
-//     try {
-//       const petData = await Pet.findByPk(req.params.id);
-  
-//       if (petData) {
-//         const pet = petData.get({ plain: true });
-  
-//         res.render('edit-pet', { // edit-pet handlebar
-//           layout: 'dashboard',
-//           pet,
-//         });
-//       } else {
-//         res.status(404).end();
-//       }
-//     } catch (err) {
-//       res.redirect('login'); // login handlebar
-//     }
-// });
+// UPDATE PET  
+router.get('/edit', withAuth, (req, res) => {
+  res.render('update-pet', { // update-pet handlebar
+    layout: 'dashboard',
+  });
+});
+
+// DELETE A PET
+router.get('/delete', withAuth, (req, res) => {
+  res.render('delete-pet', { // delete-pet handlebar
+    layout: 'dashboard',
+  });
+});
 
   module.exports = router;
