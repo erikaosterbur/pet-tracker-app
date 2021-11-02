@@ -22,7 +22,8 @@ router.delete('/:id', withAuth, async (req, res) => {
     try {
       const petData = await Pet.destroy({
         where: {
-          id: req.params.id
+          id: req.params.id,
+          user_id:req.session.user_id, 
         }
       });
   
@@ -38,7 +39,21 @@ router.delete('/:id', withAuth, async (req, res) => {
     }
 });
 
-//Get all pets
+//Update Pet
+router.put('/:id', (req, res) => {
+    Pet.update( req.body, {
+//Possible changes
+        where: {
+            id: req.params.id,
+            user_id:req.session.user_id, 
+        }
+    })
+    .then((updatedPet) => {
+        res.json(updatedPet)
+    })
+    .catch((err) => res.json(err),
+    console.log(err))
+});
 
 
 module.exports = router;
