@@ -1,4 +1,4 @@
-async function newFormHandler(event) {
+async function newPetFormHandler(event) {
     event.preventDefault();
     const name = document.querySelector('#pname').value;
     const type = document.querySelector('#pspecies').value;
@@ -20,7 +20,7 @@ async function newFormHandler(event) {
     }
 }
 
-document.querySelector('.new-pet').addEventListener('submit', newFormHandler);
+document.querySelector('.new-pet').addEventListener('submit', newPetFormHandler);
 
 
 
