@@ -1,26 +1,30 @@
-async function newPetFormHandler(event) {
+const newPetFormHandler = async (event) => {
     event.preventDefault();
-    const name = document.querySelector('#pname').value;
-    const type = document.querySelector('#pspecies').value;
-    const color = document.querySelector('#pcolor').value;
-    const dateofbirth = document.querySelector('#pbday').value;
-    const response = await fetch(`/api/petRoute`, {
+
+    const pet_name = document.querySelector('#pname').value.trim();
+    const pet_type = document.querySelector('#pspecies').value.trim();
+    const color = document.querySelector('#pcolor').value.trim();
+    const dateofbirth = document.querySelector('#pbday').value.trim();
+
+    const response = await fetch(`/api/pets`, {
         method: `POST`,
         body: JSON.stringify({
-            name,
-            type,
+            pet_name,
+            pet_type,
             color,
-            dateofbirth,
+            dateofbirth, 
         }),
+        headers: { 'Content-Type': 'application/json' },
     });
+
     if (response.ok) {
-        document.location.replace('/');
+        document.location.replace('/dashboard');
     } else {
       alert('failed to add pet');
     }
 }
 
-document.querySelector('.new-pet').addEventListener('submit', newPetFormHandler);
+document.querySelector('#new-pet-form').addEventListener('submit', newPetFormHandler);
 
 
 

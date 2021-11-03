@@ -4,7 +4,6 @@ const withAuth = require('../../utils/auth');
 
 //create new user route
 router.post('/', async (req, res) => {
-    console.log("route hit")
     try {
         const userData = await User.create({
             username: req.body.username,
@@ -35,16 +34,17 @@ router.post('/login', async (req, res) => {
             res.status(400).json({ message: 'Incorrect username or password, please try again' });
             return;
         }
-
+        console.log(userData);
         const validPassword = await userData.checkPassword(req.body.password);
 
         if (!validPassword) {
             res.status(400).json({ message: 'Incorrect username or password, please try again '});
             return;
         }
-
+        console.log(validPassword);
         req.session.save(() => {
-            req.session.user_id = userData.isSoftDeleted;
+            req.session.user_id = userData.id;
+            req.session.username = userData.username;
             req.session.logged_in = true;
 
             res.json({ user: userData, message: 'You are now logged in!' });

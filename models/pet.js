@@ -40,14 +40,6 @@ Pet.init(
         unique: false
       }
     },
-    // vet_id: {
-    //     type: DataTypes.INTEGER,
-    //     references: {
-    //         model: 'vet',
-    //         key: 'id',
-    //         unique: false,
-    //     }
-    // }
   },
   {
     sequelize,
