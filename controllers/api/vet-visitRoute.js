@@ -61,10 +61,8 @@ router.post('/', withAuth, async (req, res) => {
 });
 
 //Update Vet visit
-//Likely needs tweaking
 router.put('/:id', withAuth, (req, res) => {
     Vet.update( req.body, {
-//This part is iffy
       where: {
         id: req.params.id,
       }
@@ -72,8 +70,8 @@ router.put('/:id', withAuth, (req, res) => {
     .then((updatedVet) => {
       res.json(updatedVet)
     })
-    .catch((err) => res.json(err),
-    console.log(err))
+    .catch((err) => {res.json(err),
+    console.log(err) })
 });
 
 //Delete a vet visit
@@ -81,7 +79,7 @@ router.delete('/:id', withAuth, async (req, res) => {
     try {
       const vetData = await Vet.destroy({
         where: {
-          id: req.params.id
+          id: req.params.id,
         }
       });
   
@@ -93,6 +91,24 @@ router.delete('/:id', withAuth, async (req, res) => {
       res.status(200).json(vetData);
     } catch (err) {
       console.log(err)
+      res.status(500).json(err);
+    }
+});
+
+// UPDATE PET  
+router.get('/edit/:id', withAuth, async (req, res) => {
+  try {
+    const vetData = await Vet.findByPk(req.params.id, {
+    });
+
+    const vet = vetData.get({ plain: true });
+    
+    res.render('edit-vet', {
+        layout: 'dashboard',
+        vet,
+        logged_in: req.session.logged_in,
+    });
+  } catch (err) {
       res.status(500).json(err);
     }
 });
