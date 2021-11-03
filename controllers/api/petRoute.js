@@ -5,7 +5,7 @@ const withAuth = require('../../utils/auth');
 router.get('/:id', withAuth, async (req, res) => {
   try {
     const petData = await Pet.findByPk(req.params.id, {
-      include: [{ model: Vet }]
+      // include: [{ model: Vet }]
     });
 
     if (!petData) {
@@ -13,7 +13,14 @@ router.get('/:id', withAuth, async (req, res) => {
       return;
     }
 
-    res.status(200).json(petData);
+    const pet = petData.get({ plain: true});
+
+    res.render('petprofile', { 
+      layout: 'dashboard',
+      pet,
+      logged_in: req.session.logged_in,
+    });
+
   } catch (err) {
     console.log(err)
     res.status(500).json(err);
@@ -22,7 +29,6 @@ router.get('/:id', withAuth, async (req, res) => {
 
 //Create a new Pet
 router.post('/', withAuth, async (req, res) => {
-    console.log('route hit!');
     console.log(req.body);
     try {
         const newPet = await Pet.create({

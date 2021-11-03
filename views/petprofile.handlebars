@@ -1,14 +1,21 @@
-<body>
-    <div>
-        <button class="col-6">Edit Pet Info</button>
-        <button class="col-6">Delete Pet</button>
-    </div>
 
     <div>
-        <h3>{{pet.name}}</h3>
-        <h5>{{pet.type}}</h5>
+        <a href="/dashboard/edit"><button class="col-6">Edit Pet Info</button></a>
+        <button id="delete-pet-button" class="col-6">Delete Pet</button>
+    </div>
+
+    <input type="hidden" id="edit-pet-id" value="{{pet.id}}"/>
+
+    <div>
+        <h3>{{pet.pet_name}}</h3>
+        <h5>{{pet.pet_type}}</h5>
         <h5>{{pet.color}}</h5>
         <h5>{{pet.dateofbirth}}</h5>
     </div>
     {{!-- Populate vet visits for pet --}}
-</body>
+    {{!-- add vet visit button --}}
+
+
+ {{!-- <script src="/js/new-vet.js"></script> --}}
+
+ <script src="/js/edit-pet.js"></script>
