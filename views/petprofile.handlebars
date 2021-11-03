@@ -13,9 +13,19 @@
         <h5>{{pet.dateofbirth}}</h5>
     </div>
     {{!-- Populate vet visits for pet --}}
-    {{!-- add vet visit button --}}
+    {{#each vets as |vet| }}
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">{{vet.date}}</h5>
+                <a href="/api/vet-visits/{{vet.id}}" class="card-link">View Vet Visit</a>
+            </div>
+        </div>
+    {{/each}}
 
 
- {{!-- <script src="/js/new-vet.js"></script> --}}
+
+<footer class="footer flex-row justify-center">
+    <a href="/api/pets/{{pet.id}}/new/vet">Add New Vet Visit</a>
+</footer>
 
  <script src="/js/edit-pet.js"></script>
