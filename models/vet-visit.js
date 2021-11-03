@@ -17,7 +17,7 @@ Vet.init(
       autoIncrement: true,
     },
     date: {
-      type: DataTypes.STRING,
+      type: DataTypes.DATEONLY,
       allowNull: false,
     },
     description: {

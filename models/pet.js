@@ -29,7 +29,7 @@ Pet.init(
       allowNull: false,
     },
     dateofbirth: {
-      type: DataTypes.STRING,
+      type: DataTypes.DATEONLY,
       allowNull: false,
     },
     user_id: {
