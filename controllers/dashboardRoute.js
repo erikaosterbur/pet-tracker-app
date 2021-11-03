@@ -18,9 +18,10 @@ router.get('/', withAuth, async (req, res) => {
       res.render('all-pets', { // all-pets handlebar
         layout: 'dashboard',
         pets,
+        logged_in: req.session.logged_in,
       });
     } catch (err) {
-      res.redirect('login'); // login handlebar
+      res.redirect('/api/users/login'); // login handlebar
     }
   });
 
@@ -28,6 +29,7 @@ router.get('/', withAuth, async (req, res) => {
 router.get('/new', withAuth, (req, res) => {
     res.render('newpet', { // new-pet handlebar
       layout: 'dashboard',
+      logged_in: req.session.logged_in,
     });
   });
 
@@ -35,6 +37,7 @@ router.get('/new', withAuth, (req, res) => {
 router.get('/edit', withAuth, (req, res) => {
   res.render('edit-pet', { // update-pet handlebar
     layout: 'dashboard',
+    logged_in: req.session.logged_in,
   });
 });
 
@@ -42,6 +45,7 @@ router.get('/edit', withAuth, (req, res) => {
 router.get('/delete', withAuth, (req, res) => {
   res.render('edit-pet', { // delete-pet handlebar
     layout: 'dashboard',
+    logged_in: req.session.logged_in,
   });
 });
 

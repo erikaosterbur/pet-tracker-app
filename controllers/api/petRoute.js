@@ -1,12 +1,11 @@
 const router = require('express').Router();
-const { request } = require('express');
 const { Pet, Vet } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 router.get('/:id', withAuth, async (req, res) => {
   try {
     const petData = await Pet.findByPk(req.params.id, {
-      indclude: [{ model: Vet }]
+      include: [{ model: Vet }]
     });
 
     if (!petData) {
@@ -23,14 +22,16 @@ router.get('/:id', withAuth, async (req, res) => {
 
 //Create a new Pet
 router.post('/', withAuth, async (req, res) => {
+    console.log('route hit!');
+    console.log(req.body);
     try {
         const newPet = await Pet.create({
             ...req.body,
-            user_id:req.session.user_id, 
+            user_id: req.session.user_id, 
         });
 
         res.status(200).json(newPet);
-    }catch (err) {
+    } catch (err) {
         res.status(400).json(err);
     }
 });

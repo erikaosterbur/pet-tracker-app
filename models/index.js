@@ -6,18 +6,9 @@ Pet.belongsTo(User, {
     foreignKey: 'user_id'
 })
 
-User.hasMany(Pet, {
-    foreignKey: 'pet_id'
-})
-
-Pet.hasMany(Vet, {
-    foreignKey: 'vet_id'
-})
-
 Vet.belongsTo(Pet, {
     foreignKey: 'pet_id'
 })
-
 
 module.exports = {
     Pet,
