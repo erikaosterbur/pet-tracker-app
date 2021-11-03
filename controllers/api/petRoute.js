@@ -5,19 +5,31 @@ const withAuth = require('../../utils/auth');
 router.get('/:id', withAuth, async (req, res) => {
   try {
     const petData = await Pet.findByPk(req.params.id, {
-      // include: [{ model: Vet }]
     });
+
+    const vetData = await Vet.findAll({
+      where: {
+        pet_id: req.params.id,
+      }
+    })
+
+    console.log(vetData);
 
     if (!petData) {
       res.status(404).json({ message: "No pet found with that id :("})
       return;
     }
 
+    const vets = vetData.map((vet) =>
+      vet.get({ plain: true })
+      );
+
     const pet = petData.get({ plain: true});
 
     res.render('petprofile', { 
       layout: 'dashboard',
       pet,
+      vets,
       logged_in: req.session.logged_in,
     });
 
@@ -29,7 +41,6 @@ router.get('/:id', withAuth, async (req, res) => {
 
 //Create a new Pet
 router.post('/', withAuth, async (req, res) => {
-    console.log(req.body);
     try {
         const newPet = await Pet.create({
             ...req.body,
@@ -79,6 +90,37 @@ router.put('/:id', (req, res) => {
     .catch((err) => res.json(err),
     console.log(err))
 });
+  
+router.get('/', withAuth, async (req, res) => {
+  try {
+    const vetData = await Vet.findAll({
+      where: {
+          user_id: req.session.user_id,
+        },
+    });
 
+    const vets = vetData.map((vet) =>
+      vet.get({ plain: true })
+    );
+
+    res.render('vet-visit', { 
+      layout: 'dashboard',
+      vets,
+      logged_in: req.session.logged_in,
+    });
+  } catch (err) {
+    res.redirect('/api/users/login'); // login handlebar
+  }
+});
+
+// NEW PET  
+router.get('/:id/new/vet', withAuth, (req, res) => {
+  const pet = {id: req.params.id}
+  res.render('new-vet-visit', { 
+    layout: 'dashboard',
+    pet,
+    logged_in: req.session.logged_in,
+  });
+});
 
 module.exports = router;

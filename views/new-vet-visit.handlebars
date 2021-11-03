@@ -1,4 +1,5 @@
     <form class='new-vet-form'>
+        <input type="hidden" name="pet-id" value="{{pet.id}}" />
         <p>
             What date did this visit take place?
         </p>
@@ -11,7 +12,8 @@
             What was pet's recorded weight?
         </p>
         <textarea id='new-visit-weight'></textarea>
+        <button type="submit" id='new-visit-submit'>Submit</button>
     </form>
 
-<button id='new-visit-submit'>Submit</button>
 
+<script src="/js/new-vet.js"></script>

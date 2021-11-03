@@ -26,15 +26,21 @@ router.get('/', withAuth, async (req, res) => {
 router.get('/:id', withAuth, async (req, res) => {
     try {
       const vetData = await Vet.findByPk(req.params.id, {
-        indclude: [{ model: Pet }]
+        // indclude: [{ model: Pet }]
       });
   
       if (!vetData) {
         res.status(404).json({ message: "No vet visit found with that id :("})
         return;
       }
+
+      const vet = vetData.get({ plain: true});
   
-      res.status(200).json(vetData);
+      res.render('vet-visit', {
+        layout: 'dashboard',
+        vet,
+        logged_in: req.session.logged_in
+      })
     } catch (err) {
       console.log(err)
       res.status(500).json(err);
@@ -44,13 +50,14 @@ router.get('/:id', withAuth, async (req, res) => {
 //Create new vet visit
 router.post('/', withAuth, async (req, res) => {
     try {
-      const vetData = await Vet.create(req.body);
+      const vetData = await Vet.create({
+        ...req.body, 
+    });
       res.status(200).json(vetData);
     } catch (err) {
       console.log(err)
       res.status(400).json(err)
     }
-
 });
 
 //Update Vet visit

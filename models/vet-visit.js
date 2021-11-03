@@ -25,7 +25,7 @@ Vet.init(
       allowNull: false,
     },
     weight: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: false,
     },
     pet_id: {
