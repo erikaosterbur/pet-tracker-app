@@ -34,11 +34,21 @@ router.get('/new', withAuth, (req, res) => {
   });
 
 // UPDATE PET  
-router.get('/edit', withAuth, (req, res) => {
-  res.render('edit-pet', { // update-pet handlebar
-    layout: 'dashboard',
-    logged_in: req.session.logged_in,
-  });
+router.get('/edit/:id', withAuth, async (req, res) => {
+  try {
+    const petData = await Pet.findByPk(req.params.id, {
+    });
+
+    const pet = petData.get({ plain: true });
+    
+    res.render('edit-pet', {
+        layout: 'dashboard',
+        pet,
+        logged_in: req.session.logged_in,
+    });
+  } catch (err) {
+      res.status(500).json(err);
+    }
 });
 
 // DELETE A PET

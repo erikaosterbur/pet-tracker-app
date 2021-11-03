@@ -1,4 +1,4 @@
-
+<input type="hidden" id="edit-vet-id" value="{{vet.id}}"/>
 <section>
     <p id='vet-visit-date'>
         Date:
@@ -13,8 +13,8 @@
         {{vet.weight}}
     </p>
     <div>
-        <button class='col-6' id='delete-visit-btn'>Delete</button>
-        <button class='col-6' id='update-visit-btn'>Update</button>
+        <button class='col-6' id='delete-vet-button'>Delete</button>
+        <a href="/api/vet-visits/edit/{{vet.id}}"><button class='col-6'>Update</button></a>
     </div>  
 </section>
 

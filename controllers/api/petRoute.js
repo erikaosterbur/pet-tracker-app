@@ -87,8 +87,8 @@ router.put('/:id', (req, res) => {
     .then((updatedPet) => {
         res.json(updatedPet)
     })
-    .catch((err) => res.json(err),
-    console.log(err))
+    .catch((err) => { res.json(err)
+    console.log(err) })
 });
   
 router.get('/', withAuth, async (req, res) => {
