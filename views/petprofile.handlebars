@@ -4,15 +4,17 @@
         <button id="delete-pet-button" class="col-6">Delete Pet</button> --}}
         <a href="/dashboard/edit/{{pet.id}}"><button class="waves-effect waves-light btn-large">Edit Pet Info</button></a>
         <button id="delete-pet-button" class="waves-effect waves-light btn-large">Delete Pet</button>
+        <a href="/api/pets/{{pet.id}}/new/vet"><button class="waves-effect waves-light btn-large">Add New Vet Visit</button></a>
+
     </div>
 
     <input type="hidden" id="edit-pet-id" value="{{pet.id}}"/>
 
     <div>
-        <h3>{{pet.pet_name}}</h3>
-        <h5>{{pet.pet_type}}</h5>
-        <h5>{{pet.color}}</h5>
-        <h5>{{pet.dateofbirth}}</h5>
+        <h3>Name: {{pet.pet_name}}</h3>
+        <h5>Type: {{pet.pet_type}}</h5>
+        <h5>Color: {{pet.color}}</h5>
+        <h5>Date of Birth: {{pet.dateofbirth}}</h5>
     </div>
     {{!-- Populate vet visits for pet --}}
     {{#each vets as |vet| }}
@@ -26,8 +28,8 @@
 
 
 
-<footer class="footer flex-row justify-center">
+{{!-- <footer class="footer flex-row justify-center">
     <a href="/api/pets/{{pet.id}}/new/vet">Add New Vet Visit</a>
-</footer>
+</footer> --}}
 
  <script src="/js/edit-pet.js"></script>
