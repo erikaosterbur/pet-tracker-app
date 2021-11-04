@@ -3,7 +3,7 @@ const newPetFormHandler = async (event) => {
 
     const pet_name = document.querySelector('#pname').value.trim();
     const pet_type = document.querySelector('#pspecies').value.trim();
-    const color = document.querySelector('#pcolor').value.trim();
+    const breed = document.querySelector('#pbreed').value.trim();
     const dateofbirth = document.querySelector('#pbday').value.trim();
 
     const response = await fetch(`/api/pets`, {
@@ -11,7 +11,7 @@ const newPetFormHandler = async (event) => {
         body: JSON.stringify({
             pet_name,
             pet_type,
-            color,
+            breed,
             dateofbirth, 
         }),
         headers: { 'Content-Type': 'application/json' },
