@@ -20,7 +20,7 @@ async function newVetFormHandler(event) {
 
     if (response.ok) {
       window.alert("New vet visit created!");
-      document.location.replace('/dashboard');
+      document.location.replace(`/api/pets/${pet_id}`);
     } else {
       alert('Failed to add visit');
     }
