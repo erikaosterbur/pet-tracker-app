@@ -1,7 +1,5 @@
 
     <div class="row m-auto">
-        {{!-- <a href="/dashboard/edit/{{pet.id}}"><button class="col-6">Edit Pet Info</button></a>
-        <button id="delete-pet-button" class="col-6">Delete Pet</button> --}}
         <div class="p-4 col-sm-12 col-lg-3">
             <a href="/dashboard/edit/{{pet.id}}"><button class="waves-effect waves-light btn-large">Edit Pet Info</button></a>
         </div>
@@ -24,29 +22,20 @@
                     <h5>Breed: {{pet.breed}}</h5>
                     <h5>Date of Birth: {{pet.dateofbirth}}</h5>
                 </div>
-    {{!-- Populate vet visits for pet --}}
-    {{#each vets as |vet| }}
-        <div class="card" style="width: 18rem;">
-            <div class="card-body">
-                <h5 class="card-title">{{vet.date}}</h5>
-                <a href="/api/vet-visits/{{vet.id}}" class="card-link">View Vet Visit</a>
             </div>
         </div>
-        {{!-- Populate vet visits for pet --}}
-        <div class="col-12 col-md-4 col-lg-6">
+                {{!-- Populate vet visits for pet --}}
             {{#each vets as |vet| }}
-                <div class="card" style="width: 18rem;">
-                    <div class="card-body">
-                        <h5 class="card-title">{{vet.date}}</h5>
-                        <a href="/api/vet-visits/{{vet.id}}" class="card-link">View Vet Visit</a>
+                <div class="col-12 col-md-4 col-lg-6">
+                    <div class="card" style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">{{vet.date}}</h5>
+                            <a href="/api/vet-visits/{{vet.id}}" class="card-link">View Vet Visit</a>
+                        </div>
                     </div>
                 </div>
             {{/each}}
-        </div>
     </div>
 
-{{!-- <footer class="footer flex-row justify-center">
-    <a href="/api/pets/{{pet.id}}/new/vet">Add New Vet Visit</a>
-</footer> --}}
-
- <script src="/js/edit-pet.js"></script>
+<script src="/js/edit-pet.js"></script>
+<script src="/js/update-pet.js"></script>
