@@ -14,10 +14,21 @@ router.get('/', withAuth, async (req, res) => {
       const pets = petData.map((pet) =>
         pet.get({ plain: true })
       );
-  
+
+      let petImage;
+
+      if (petData.pet_type === 'Dog') {
+        petImage = '/images/dog.jpg';
+        } else if (petData.pet_type === 'Cat') {
+          petImage = '/images/cat.jpg';
+        } else {
+          petImage = '/images/jabba.png';
+        } 
+
       res.render('all-pets', { // all-pets handlebar
         layout: 'dashboard',
         pets,
+        petImage,
         logged_in: req.session.logged_in,
       });
     } catch (err) {
