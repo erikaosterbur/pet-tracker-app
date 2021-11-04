@@ -1,7 +1,9 @@
 
     <div>
-        <a href="/dashboard/edit/{{pet.id}}"><button class="col-6">Edit Pet Info</button></a>
-        <button id="delete-pet-button" class="col-6">Delete Pet</button>
+        {{!-- <a href="/dashboard/edit/{{pet.id}}"><button class="col-6">Edit Pet Info</button></a>
+        <button id="delete-pet-button" class="col-6">Delete Pet</button> --}}
+        <a href="/dashboard/edit/{{pet.id}}"><button class="waves-effect waves-light btn-large">Edit Pet Info</button></a>
+        <button id="delete-pet-button" class="waves-effect waves-light btn-large">Delete Pet</button>
     </div>
 
     <input type="hidden" id="edit-pet-id" value="{{pet.id}}"/>

@@ -9,22 +9,25 @@
         </div>
     </div>
 {{/each}} --}}
+{{!-- <a class="addlink" href="/dashboard/new">Add New Pet</a> --}}
 
 {{#each pets as |pet| }}
-  <div class="card">
+  <div class= "col-6">
+  <div class="card small">
     <div class="card-image waves-effect waves-block waves-light">
       <img class="activator" src='{{pet.petImage}}'>
     </div>
     <div class="card-content">
-      <span class="card-title activator grey-text text-darken-4">{{pet.pet_name}}<i class="material-icons right">...</i></span>
+      <span class="test card-title activator grey-text text-darken-4">{{pet.pet_name}}<i class="material-icons right">...</i></span>
       <p><a href="/api/pets/{{pet.id}}" class="card-link">View Pet</a></p>
     </div>
     <div class="card-reveal">
       <span class="card-title grey-text text-darken-4">Pet Details<i class="material-icons right">close</i></span>
-      <p>{{pet.pet_type}}</p>
-      <p>{{pet.color}}</p>
-      <p>{{pet.dateofbirth}}</p>
+      <p>Type: {{pet.pet_type}}</p>
+      <p>Color: {{pet.color}}</p>
+      <p>Date of birth: {{pet.dateofbirth}}</p>
     </div>
+  </div>
   </div>
 {{/each}}
 
