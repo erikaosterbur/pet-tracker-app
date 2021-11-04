@@ -1,4 +1,4 @@
-{{#each pets as |pet| }}
+{{!-- {{#each pets as |pet| }}
     <div class="card" style="width: 18rem;">
         <div class="card-body">
             <h5 class="card-title">{{pet.pet_name}}</h5>
@@ -8,7 +8,26 @@
             <a href="/api/pets/{{pet.id}}" class="card-link">View Pet</a>
         </div>
     </div>
+{{/each}} --}}
+
+{{#each pets as |pet| }}
+  <div class="card">
+    <div class="card-image waves-effect waves-block waves-light">
+      <img class="activator" src="{{petImage}}">
+    </div>
+    <div class="card-content">
+      <span class="card-title activator grey-text text-darken-4">{{pet.pet_name}}<i class="material-icons right">...</i></span>
+      <p><a href="/api/pets/{{pet.id}}" class="card-link">View Pet</a></p>
+    </div>
+    <div class="card-reveal">
+      <span class="card-title grey-text text-darken-4">Pet Details<i class="material-icons right">close</i></span>
+      <p>{{pet.pet_type}}</p>
+      <p>{{pet.color}}</p>
+      <p>{{pet.dateofbirth}}</p>
+    </div>
+  </div>
 {{/each}}
+
 
 
 <footer class="footer flex-row justify-center">
