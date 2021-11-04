@@ -18,7 +18,7 @@ const updateButtonHandler = async (event) => {
 
         if (response.ok) {
             window.alert('Vet visit updated!');
-            document.location.replace('/dashboard');
+            document.location.replace(`/api/vet-visits/${vet_id}`);
         } else {
             alert('Failed to update vet visit');
         }

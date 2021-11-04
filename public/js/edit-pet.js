@@ -14,18 +14,7 @@ const delButtonHandler = async (event) => {
         }
 };
 
-// const updateButtonHandler = async (event) => {
-//     event.preventDefault();
-//     res.render('edit-pet', { 
-//         layout: 'dashboard',
-//         logged_in: req.session.logged_in,
-//       });
-// }
-
 document
     .querySelector('#delete-pet-button')
     .addEventListener('click', delButtonHandler);
 
-// document
-//     .querySelector('#update-pet-button')
-//     .addEventListener('click', updateButtonHandler);
