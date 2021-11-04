@@ -4,26 +4,26 @@
     <a href="/dashboard/new"><button class="waves-effect waves-light btn-large">Add New Pet</button></a>
 </div>
 
-<div class="col-sm-10 col-md-6 col-lg-4">
+<div class="row">
 
-  {{#each pets as |pet| }}
-    <div class= "">
-    <div class="card large">
-      <div class="card-image waves-effect waves-block waves-light">
-        <img class="pet-image activator" src='{{pet.petImage}}'>
-      </div>
-      <div class="card-content">
-        <span class="test card-title activator grey-text text-darken-4">{{pet.pet_name}}<i class="material-icons right">...</i></span>
-        <p><a href="/api/pets/{{pet.id}}" class="card-link">View Pet</a></p>
-      </div>
-      <div class="card-reveal">
-        <span class="card-title grey-text text-darken-4">Pet Details<i class="material-icons right">close</i></span>
-        <p>Type: {{pet.pet_type}}</p>
-        <p>Breed: {{pet.breed}}</p>
-        <p>Date of birth: {{pet.dateofbirth}}</p>
-      </div>
-    </div>
-    </div>
-  {{/each}}
+      {{#each pets as |pet| }}
+        <div class= "col-sm-10 col-md-6 col-lg-4">
+        <div class="card large">
+          <div class="card-image waves-effect waves-block waves-light">
+            <img class="pet-image activator" src='{{pet.petImage}}'>
+          </div>
+          <div class="card-content">
+            <span class="test card-title activator grey-text text-darken-4">{{pet.pet_name}}<i class="material-icons right">...</i></span>
+            <p><a href="/api/pets/{{pet.id}}" class="card-link">View Pet</a></p>
+          </div>
+          <div class="card-reveal">
+            <span class="card-title grey-text text-darken-4">Pet Details<i class="material-icons right">close</i></span>
+            <p>Type: {{pet.pet_type}}</p>
+            <p>Breed: {{pet.breed}}</p>
+            <p>Date of birth: {{pet.dateofbirth}}</p>
+          </div>
+        </div>
+        </div>
+      {{/each}}
 
 </div>
