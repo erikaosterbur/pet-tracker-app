@@ -13,8 +13,6 @@ router.get('/:id', withAuth, async (req, res) => {
       }
     })
 
-    console.log(vetData);
-
     if (!petData) {
       res.status(404).json({ message: "No pet found with that id :("})
       return;
@@ -26,10 +24,21 @@ router.get('/:id', withAuth, async (req, res) => {
 
     const pet = petData.get({ plain: true});
 
+    let petImage;
+
+    if (petData.pet_type === 'Dog') {
+      petImage = '/images/dog.jpg';
+    } else if (petData.pet_type === 'Cat') {
+      petImage = '/images/cat.jpg';
+    } else {
+      petImage = '/images/jabba.png';
+    } 
+
     res.render('petprofile', { 
       layout: 'dashboard',
       pet,
       vets,
+      petImage,
       logged_in: req.session.logged_in,
     });
 
