@@ -1,22 +1,30 @@
 <input type="hidden" id="edit-vet-id" value="{{vet.id}}"/>
-<section>
-    <p id='vet-visit-date'>
-        Date:
-        {{vet.date}}
-    </p>
-    <p id='vet-visit-description'>
-        Description:
-        {{vet.description}}
-    </p>
-    <p id='vet-visit-weight'>
-        Weight:
-        {{vet.weight}}
-    </p>
-    <div>
-        <button class='col-6' id='delete-vet-button'>Delete</button>
-        <a href="/api/vet-visits/edit/{{vet.id}}"><button class='col-6'>Update</button></a>
-    </div>  
-</section>
+
+<div class="row">
+    <div class="p-4 col-sm-12 col-lg-3">
+        <a href="/api/vet-visits/edit/{{vet.id}}"><button class="waves-effect waves-light btn-large">Edit Vet Visit</button></a>
+    </div>
+    <div class="p-4 col-sm-12 col-lg-3">
+        <button id="delete-vet-button" class="waves-effect waves-light btn-large">Delete Vet Visit</button>
+    </div>
+</div>
+
+<div class="card" style="width: 25rem;">
+    <div class="card-body" >
+        <p id='vet-visit-date'>
+            Date:
+            {{vet.date}}
+        </p>
+        <p id='vet-visit-description'>
+            Description:
+            {{vet.description}}
+        </p>
+        <p id='vet-visit-weight'>
+            Weight:
+            {{vet.weight}}
+        </p> 
+    </div>
+</div>
 
 
 <script src="/js/edit-vet.js"></script>

@@ -11,6 +11,10 @@
 {{/each}} --}}
 {{!-- <a class="addlink" href="/dashboard/new">Add New Pet</a> --}}
 
+<div class="p-4 col-sm-12 col-lg-3">
+    <a href="/dashboard/new"><button class="waves-effect waves-light btn-large">Add New Pet</button></a>
+</div>
+
 {{#each pets as |pet| }}
   <div class= "col-6">
   <div class="card small">
@@ -30,9 +34,3 @@
   </div>
   </div>
 {{/each}}
-
-
-
-<footer class="footer flex-row justify-center">
-    <a href="/dashboard/new">Add New Pet</a>
-</footer>

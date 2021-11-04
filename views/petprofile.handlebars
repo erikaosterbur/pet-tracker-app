@@ -1,33 +1,46 @@
 
-    <div>
+    <div class="row m-auto">
         {{!-- <a href="/dashboard/edit/{{pet.id}}"><button class="col-6">Edit Pet Info</button></a>
         <button id="delete-pet-button" class="col-6">Delete Pet</button> --}}
-        <a href="/dashboard/edit/{{pet.id}}"><button class="waves-effect waves-light btn-large">Edit Pet Info</button></a>
-        <button id="delete-pet-button" class="waves-effect waves-light btn-large">Delete Pet</button>
+        <div class="p-4 col-sm-12 col-lg-3">
+            <a href="/dashboard/edit/{{pet.id}}"><button class="waves-effect waves-light btn-large">Edit Pet Info</button></a>
+        </div>
+        <div class="p-4 col-sm-12 col-lg-3">
+            <button id="delete-pet-button" class="waves-effect waves-light btn-large">Delete Pet</button>
+        </div>
+        <div class="p-4 col-sm-12 col-lg-3">
+            <a href="/api/pets/{{pet.id}}/new/vet"><button class="waves-effect waves-light btn-large">Add New Vet Visit</button></a>
+        </div>
     </div>
 
     <input type="hidden" id="edit-pet-id" value="{{pet.id}}"/>
 
-    <div>
-        <h3>{{pet.pet_name}}</h3>
-        <h5>{{pet.pet_type}}</h5>
-        <h5>{{pet.color}}</h5>
-        <h5>{{pet.dateofbirth}}</h5>
-    </div>
-    {{!-- Populate vet visits for pet --}}
-    {{#each vets as |vet| }}
-        <div class="card" style="width: 18rem;">
-            <div class="card-body">
-                <h5 class="card-title">{{vet.date}}</h5>
-                <a href="/api/vet-visits/{{vet.id}}" class="card-link">View Vet Visit</a>
+    <div class="row p-4">
+        <div class="col-12 col-md-4 col-lg-6">
+            <div class="card" style="width: 25rem;">
+                <div class="card-body" style="p-4">
+                    <h3>Name: {{pet.pet_name}}</h3>
+                    <h5>Type: {{pet.pet_type}}</h5>
+                    <h5>Color: {{pet.color}}</h5>
+                    <h5>Date of Birth: {{pet.dateofbirth}}</h5>
+                </div>
             </div>
         </div>
-    {{/each}}
+        {{!-- Populate vet visits for pet --}}
+        <div class="col-12 col-md-4 col-lg-6">
+            {{#each vets as |vet| }}
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">{{vet.date}}</h5>
+                        <a href="/api/vet-visits/{{vet.id}}" class="card-link">View Vet Visit</a>
+                    </div>
+                </div>
+            {{/each}}
+        </div>
+    </div>
 
-
-
-<footer class="footer flex-row justify-center">
+{{!-- <footer class="footer flex-row justify-center">
     <a href="/api/pets/{{pet.id}}/new/vet">Add New Vet Visit</a>
-</footer>
+</footer> --}}
 
  <script src="/js/edit-pet.js"></script>
