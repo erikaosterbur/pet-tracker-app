@@ -8,3 +8,11 @@
 .footer {
     font-size: 25px;
 }
+
+body{
+    padding: 20px;
+    background-image: url("/images/pets.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
