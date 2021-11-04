@@ -11,28 +11,31 @@ router.get('/', withAuth, async (req, res) => {
           },
       });
   
-      const pets = petData.map((pet) =>
+      let pets = petData.map((pet) =>
         pet.get({ plain: true })
       );
 
-      let petImage;
+      pets = pets.map((pet) => {
+        if (pet.pet_type === 'Dog') {
+            pet.petImage = '/images/dog.jpg';
+          } else if (pet.pet_type === 'Cat') {
+            pet.petImage = '/images/cat.jpg';
+          } else {
+            pet.petImage = '/images/jabba.png';
+          }
+          return pet;
+      });
 
-      if (petData.pet_type === 'Dog') {
-        petImage = '/images/dog.jpg';
-        } else if (petData.pet_type === 'Cat') {
-          petImage = '/images/cat.jpg';
-        } else {
-          petImage = '/images/jabba.png';
-        } 
+      console.log(pets);
 
       res.render('all-pets', { // all-pets handlebar
         layout: 'dashboard',
         pets,
-        petImage,
         logged_in: req.session.logged_in,
       });
     } catch (err) {
-      res.redirect('/api/users/login'); // login handlebar
+      console.log(err);
+      res.redirect('/'); // login handlebar
     }
   });
 
