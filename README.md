@@ -24,7 +24,7 @@ Here is the tech we used for making this project:
 -Heroku
 
 # Screenshot of Website
-![image](placeholder link)
+![image](./public/images/webpage.png)
 
 # Deployed Page
 [Pet Tracker App](https://group-1-pet-tracker.herokuapp.com/)
