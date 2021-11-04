@@ -15,7 +15,7 @@ const signupFormHandler = async (event) => {
         if (response.ok) {
           document.location.replace('/dashboard');
         } else {
-          alert(response.statusText);
+          window.alert('Unable to create new user! Make sure your password is at least 8 characters in length.');
         }
       }
     };
