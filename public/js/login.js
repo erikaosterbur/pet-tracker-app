@@ -11,9 +11,10 @@ const loginUserFormHandler = async (event) => {
           body: JSON.stringify({ username, password }),
           headers: { 'Content-Type': 'application/json' },
         });
-  
+        console.log(response);
     if (response.ok) {
       // If successful, redirect the browser to the dashboard page
+      console.log("yay!");
       document.location.replace('/dashboard');
     } else {
       window.alert('Incorrect username or password, please try again');
