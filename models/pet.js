@@ -24,7 +24,7 @@ Pet.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    color: {
+    breed: {
       type: DataTypes.STRING,
       allowNull: false,
     },
