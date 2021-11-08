@@ -97,6 +97,7 @@ router.delete('/:id', withAuth, async (req, res) => {
 
 // UPDATE PET  
 router.get('/edit/:id', withAuth, async (req, res) => {
+  console.log("route hit");
   try {
     const vetData = await Vet.findByPk(req.params.id, {
     });
